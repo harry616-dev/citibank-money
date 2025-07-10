@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citi - How can we help?</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .header {
+            background-color: white;
+            padding: 0px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            /* padding: 0 20px; */
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #0066cc;
+        }
+
+        .fdic-text {
+            font-size: 10px;
+            color: #666;
+            max-width: 200px;
+            line-height: 1.2;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .hamburger span {
+            width: 20px;
+            height: 2px;
+            background-color: #333;
+            margin: 2px 0;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .help-link {
+            color: #0066cc;
+            text-decoration: none;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .help-link:before {
+            content: "?";
+            background-color: #0066cc;
+            color: white;
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        .sign-on-btn {
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .hero-section {
+            background: #002d72;
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 32px;
+            font-weight: normal;
+            margin-bottom: 40px;
+        }
+
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 50px 12px 16px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 50px;
+            background-color: #056dae;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .quick-actions {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+    .action-list {
+  /* background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); */
+  padding: 20px; /* Add padding if you like */
+}
+
+
+        .action-item {
+  display: block;
+  padding: 16px 20px;
+  color: #0066cc;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background-color 0.2s;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  margin-bottom: 12px; /* This creates the spacing */
+}
+      .action-item:hover {
+  background-color: #f8f9fa;
+}
+
+      .action-item:last-child {
+  margin-bottom: 0; /* Removes extra margin on last item */
+}
+
+        .faqs-section {
+            margin-bottom: 40px;
+        }
+
+        .faq-item {
+            background-color: white;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+      .faq-question {
+  padding: 16px 20px;
+  background-color: white;     /* Non-active default */
+  color: #145a86;              /* Non-active default */
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  font-weight: normal;
+  border-bottom: 1px solid #ddd; /* Optional separator */
+}
+
+
+.faq-question.active {
+  background-color: #145a86;   /* Active background */
+  color: white;                /* Active text */
+}
+
+        /* .faq-question:hover {
+            background-color: #145a86;
+        } */
+
+        .faq-answer {
+            padding: 20px;
+            display: none;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .faq-answer.active {
+            display: block;
+        }
+
+        .faq-answer ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        .faq-answer li {
+            margin: 5px 0;
+        }
+
+        .show-more {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .show-more-btn {
+            background-color: transparent;
+            border: 2px solid #0066cc;
+            color: #0066cc;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .show-more-btn:hover {
+            background-color: #0066cc;
+            color: white;
+        }
+
+        .rating-section {
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .rating-text {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .stars {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .star {
+            width: 20px;
+            height: 20px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            background-color: transparent;
+        }
+
+        .star.filled {
+            background-color: #ffd700;
+            border-color: #ffd700;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 40px 20px 20px;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-section {
+            margin-bottom: 30px;
+        }
+
+        .footer-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-links {
+            display: none;
+        }
+
+        .footer-links.active {
+            display: block;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .app-links {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .app-link {
+            width: 120px;
+            height: 40px;
+            /* background-color: #555; */
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 12px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .social-link {
+            width: 30px;
+            height: 30px;
+            background-color: #555;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #555;
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+
+        .footer-bottom p {
+            font-size: 12px;
+            color: #ccc;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .footer-bottom a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        .footer-logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: #0066cc;
+            margin-top: 20px;
+        }
+
+        .feedback-btn {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            background-color: #666;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            z-index: 1000;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .header-actions {
+                gap: 10px;
+            }
+
+            .help-link span {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 24px;
+            }
+
+            .search-input {
+                font-size: 14px;
+            }
+
+            .main-content {
+                padding: 20px 15px;
+            }
+
+            .section-title {
+                font-size: 20px;
+            }
+
+            .footer-title {
+                font-size: 14px;
+            }
+
+            .footer-links {
+                display: block;
+            }
+
+            .app-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .app-link {
+                width: 100%;
+                max-width: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-section {
+                padding: 40px 15px;
+            }
+
+            .hero-title {
+                font-size: 20px;
+            }
+
+            .search-input {
+                padding: 10px 40px 10px 12px;
+            }
+
+            .search-btn {
+                width: 40px;
+            }
+
+            .action-item {
+                padding: 12px 15px;
+                font-size: 13px;
+            }
+
+            .faq-question {
+                padding: 12px 15px;
+                font-size: 13px;
+            }
+
+            .faq-answer {
+                padding: 15px;
+                font-size: 13px;
+            }
+            #fdicimage{
+                width:212px;
+            }
+            
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+              
+                <!-- <div class="logo"> -->
+                    <img src="citiredesign.svg" alt="">
+                <!-- </div> -->
+                <!-- <div class="fdic-text"> -->
+                    <img src="fdic.svg" id="fdicimage" style="" alt="">
+                <!-- </div> -->
+            </div>
+            <!-- <div class="header-actions">
+                <a href="#" class="help-link">
+                    <span>How can we help?</span>
+                </a>
+                <button class="sign-on-btn">Sign On</button>
+            </div> -->
+        </div>
+    </header>
+
+
+    <style>
+         .header1 {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
+      background: #f5f9fb;
+    }
+
+    .hamburger {
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: #003b70; /* Deep blue */
+      margin: 4px 0;
+    }
+
+    .right-section {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .search {
+      display: flex;
+      align-items: center;
+      color: #003b70;
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .search-icon {
+      width: 16px;
+      height: 16px;
+      border: 2px solid #003b70;
+      border-radius: 50%;
+      position: relative;
+      margin-right: 6px;
+    }
+
+    .search-icon::after {
+      content: '';
+      position: absolute;
+      width: 2px;
+      height: 8px;
+      background: #003b70;
+      top: 12px;
+      left: 10px;
+      transform: rotate(-45deg);
+    }
+
+    .divider {
+      width: 1px;
+      height: 20px;
+      background: #888;
+    }
+
+    .sign-on {
+      color: #003b70;
+      font-size: 14px;
+      text-decoration: none;
+    }
+    </style>
+
+     <header class="header1">
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <div class="right-section">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none"><script xmlns="http://www.w3.org/1999/xhtml" src="chrome-extension://fgddmllnllkalaagkghckoinaemmogpe/scripts/content/gps.js"></script>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M4.9537 8.70587C4.9537 3.89818 8.76907 0 13.4769 0C18.1836 0 22 3.89818 22 8.70587C22 13.5136 18.1836 17.4117 13.4769 17.4117C11.1886 17.4117 9.11501 16.4859 7.58485 14.9874L0.855574 21.8507C0.65904 22.0504 0.342179 22.0494 0.146648 21.8497C-0.0488828 21.65 -0.0488828 21.3253 0.146648 21.1256L6.89698 14.2397C5.68268 12.7362 4.9537 10.8076 4.9537 8.70587ZM5.95643 8.70587C5.95643 12.9492 9.32257 16.3875 13.4769 16.3875C17.6301 16.3875 20.9973 12.9492 20.9973 8.70587C20.9973 4.46355 17.6301 1.02422 13.4769 1.02422C9.32257 1.02422 5.95643 4.46355 5.95643 8.70587Z" fill="#04208F"/>
+</svg>    
+      <a href="#" class="search">
+    How can we help?
+      </a>
+      <div class="divider"></div>
+      <a href="#" class="sign-on">Sign On</a>
+    </div>
+  </header>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">How can we help?</h1>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search FAQs, pages, and more">
+                <button class="search-btn"><img src="download.png" alt=""></button>
+            </div>
+        </div>
+    </section>
+
+    <main class="main-content">
+        <section class="quick-actions">
+            <h2 class="section-title">Quick Actions</h2>
+            <div class="action-list">
+                <a href="#" class="action-item">Locate Branch</a>
+                <a href="#" class="action-item">Open a Checking, CD, Credit Card or Lending Account</a>
+                <a href="#" class="action-item">Forgot Password</a>
+                <a href="#" class="action-item">View Bank Account Rates</a>
+                <a href="#" class="action-item">Go to the Security Center</a>
+            </div>
+        </section>
+
+        <section class="faqs-section">
+            <h2 class="section-title">FAQs</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question active" onclick="toggleFAQ(this)">
+                    How do I regain access to my account online?
+                    <span>▼</span>
+                </div>
+                <div class="faq-answer active">
+                    <p>There are a few ways to regain online access to your account:</p>
+                    <ul>
+                        <li>Open the Citi Mobile App on your mobile device and use the QR code to sign into Citi.com.</li>
+                        <li>Choose <strong>Forgot User ID or Password</strong> on Citi.com and follow the instructions.</li>
+                        <li>If you need guidance, select Chat and we'll walk you through it.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    How do I activate a card?
+                    <span>▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>You can activate your card through several methods:</p>
+                    <ul>
+                        <li>Call the activation phone number on the sticker attached to your card</li>
+                        <li>Log into your Citi account online and activate through your account dashboard</li>
+                        <li>Use the Citi Mobile App to activate your card</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    How do I manage a dispute on my account?
+                    <span>▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>To manage a dispute on your account:</p>
+                    <ul>
+                        <li>Sign into your account and go to the Account Summary page</li>
+                        <li>Select the account with the disputed transaction</li>
+                        <li>Find the transaction and select "Dispute Transaction"</li>
+                        <li>Follow the prompts to submit your dispute</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    What do I need to apply for a Citibank account online?
+                    <span>▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>To apply for a Citibank account online, you'll need:</p>
+                    <ul>
+                        <li>Social Security Number</li>
+                        <li>Valid government-issued ID</li>
+                        <li>Proof of address (utility bill, lease agreement, etc.)</li>
+                        <li>Initial deposit amount (varies by account type)</li>
+                        <li>Contact information including phone number and email</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="show-more">
+                <button class="show-more-btn">Show more results</button>
+            </div>
+        </section>
+
+        <!-- <div class="rating-section">
+            <div class="rating-text">Was this information helpful?</div>
+            <div class="stars">
+                <button class="star" onclick="ratePage(1)"></button>
+                <button class="star" onclick="ratePage(2)"></button>
+                <button class="star" onclick="ratePage(3)"></button>
+                <button class="star" onclick="ratePage(4)"></button>
+                <button class="star" onclick="ratePage(5)"></button>
+            </div>
+        </div> -->
+    </main>
+
+   <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <div class="footer-title" onclick="toggleFooterSection(this)">
+          Why Citi
+          <span>▼</span>
+        </div>
+        <!-- <div class="footer-links">
+          <a href="#">About Citi</a>
+          <a href="#">Careers</a>
+          <a href="#">Community</a>
+          <a href="#">Citi Impact</a>
+          <a href="#">Investor Relations</a>
+          <a href="#">Newsroom</a>
+        </div> -->
+      </div>
+
+      <div class="footer-section">
+        <div class="footer-title" onclick="toggleFooterSection(this)">
+          Wealth Management
+          <span>▼</span>
+        </div>
+        <!-- <div class="footer-links">
+          <a href="#">Citi Personal Wealth Management</a>
+          <a href="#">Citi Private Bank</a>
+          <a href="#">Investment Products & Services</a>
+          <a href="#">Retirement Planning</a>
+        </div> -->
+      </div>
+
+      <div class="footer-section">
+        <div class="footer-title" onclick="toggleFooterSection(this)">
+          Business Banking
+          <span>▼</span>
+        </div>
+        <!-- <div class="footer-links">
+          <a href="#">Small Business</a>
+          <a href="#">Commercial Banking</a>
+          <a href="#">Corporate Banking</a>
+          <a href="#">Treasury and Trade Solutions</a>
+        </div> -->
+      </div>
+
+      <div class="footer-section">
+        <div class="footer-title" onclick="toggleFooterSection(this)">
+          Rates
+          <span>▼</span>
+        </div>
+        <!-- <div class="footer-links">
+          <a href="#">Deposit Rates</a>
+          <a href="#">Credit Card Rates</a>
+          <a href="#">Mortgage Rates</a>
+          <a href="#">Personal Loan Rates</a>
+        </div> -->
+      </div>
+
+      <div class="footer-section">
+        <div class="footer-title" onclick="toggleFooterSection(this)">
+          Help & Support
+          <span>▼</span>
+        </div>
+        <!-- <div class="footer-links">
+          <a href="#">Contact Us</a>
+          <a href="#">Customer Service</a>
+          <a href="#">Feedback</a>
+          <a href="#">Security Center</a>
+        </div> -->
+      </div>
+    </div>
+  <!-- </footer> -->
+
+   <script>
+    function toggleFooterSection(element) {
+      const links = element.nextElementSibling;
+      const arrow = element.querySelector('span');
+
+      if (window.innerWidth <= 768) {
+        if (links.classList.contains('active')) {
+          links.classList.remove('active');
+          arrow.textContent = '▼';
+        } else {
+          links.classList.add('active');
+          arrow.textContent = '▲';
+        }
+      }
+    }
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        document.querySelectorAll('.footer-links').forEach(links => links.classList.add('active'));
+      } else {
+        document.querySelectorAll('.footer-links').forEach(links => links.classList.remove('active'));
+      }
+    });
+
+    // On page load
+    if (window.innerWidth > 768) {
+      document.querySelectorAll('.footer-links').forEach(links => links.classList.add('active'));
+    }
+  </script>
+
+
+
+            <div class="app-links">
+                <a href="#" class="app-link">
+                    <img style="height:169px;" src="png-clipart-google-play-application-google-play-android-app-store-play-text-label-thumbnail-removebg-preview.png" alt="">
+                </a>
+                <a href="#" class="app-link" style="margin-left:20px;">
+                    <img style="height:82px;" src="png-clipart-app-store-mobile-app-itunes-ios-apple-text-label-thumbnail-removebg-preview.png" alt="">
+                </a>
+            </div>
+
+            <div class="social-links">
+                <a href="#" class="social-link">f</a>
+                <a href="#" class="social-link">𝕏</a>
+                <!-- <a href="#" class="social-link">📺</a> -->
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2025 Citigroup Inc.</p>
+                <p><a href="#">Terms & Conditions</a> | <a href="#">Privacy</a> | <a href="#">Notice of Collection</a> | <a href="#">Do Not Sell or Share My Personal Information</a> | <a href="#">Accessibility</a></p>
+                
+                <p><strong>Important Legal Disclosures & Information</strong></p>
+                <p>Citi and its affiliates are not providing legal, accounting, or tax advice. You should consult with your own legal, accounting, and tax advisors for advice specific to your situation. Citi is not responsible for the products, services, or overall website content available at the third-party sites linked from this page.</p>
+                
+                <p>All applications for credit are subject to credit approval. Not all applicants will qualify for the lowest rate. Your actual rate will depend on many factors such as your credit history, income, and other factors.</p>
+                
+                <p>Deposit products and services are offered by Citibank, N.A. Member FDIC.</p>
+                
+                <div class="footer-logo"><img src="citiredesign.svg" alt=""></div>
+            </div>
+        </div>
+    </footer>
+
+    <button class="feedback-btn">📞 Feedback</button>
+
+    <script>
+       function toggleFAQ(element) {
+  const answer = element.nextElementSibling;
+  const arrow = element.querySelector('span');
+
+  if (answer.classList.contains('active')) {
+    answer.classList.remove('active');
+    element.classList.remove('active'); // Remove active from question too
+    arrow.textContent = '▼';
+  } else {
+    // Close all others
+    document.querySelectorAll('.faq-answer.active').forEach(faq => {
+      faq.classList.remove('active');
+    });
+    document.querySelectorAll('.faq-question.active').forEach(q => {
+      q.classList.remove('active');
+    });
+    document.querySelectorAll('.faq-question span').forEach(span => {
+      span.textContent = '▼';
+    });
+
+    // Open current
+    answer.classList.add('active');
+    element.classList.add('active'); // Add active to question too
+    arrow.textContent = '▲';
+  }
+}
+
+
+        function toggleFooterSection(element) {
+            const links = element.nextElementSibling;
+            const arrow = element.querySelector('span');
+            
+            if (window.innerWidth <= 768) {
+                if (links.classList.contains('active')) {
+                    links.classList.remove('active');
+                    arrow.textContent = '▼';
+                } else {
+                    links.classList.add('active');
+                    arrow.textContent = '▲';
+                }
+            }
+        }
+
+        function ratePage(rating) {
+            const stars = document.querySelectorAll('.star');
+            stars.forEach((star, index) => {
+                if (index < rating) {
+                    star.classList.add('filled');
+                } else {
+                    star.classList.remove('filled');
+                }
+            });
+        }
+
+        // Handle responsive behavior
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                document.querySelectorAll('.footer-links').forEach(links => {
+                    links.classList.add('active');
+                });
+            } else {
+                document.querySelectorAll('.footer-links').forEach(links => {
+                    links.classList.remove('active');
+                });
+            }
+        });
+
+        // Initialize footer sections for desktop
+        if (window.innerWidth > 768) {
+            document.querySelectorAll('.footer-links').forEach(links => {
+                links.classList.add('active');
+            });
+        }
+    </script>
+</body>
+</html>
